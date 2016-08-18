@@ -1,0 +1,23 @@
+{
+  "development": {
+    "database": "api_posts",
+    "dialect": "postgres",
+    "freezeTableName": true,
+    "pool": {
+        "max": 9,
+        "min": 0,
+        "idle": 10000
+    }
+  },
+  "test": {
+    "database": "api_posts_test",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
