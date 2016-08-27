@@ -9,7 +9,15 @@ router.route('/questions')
 
   // get all questions
   .get((req, res) => {
-    Question.findAll().then((questions) => {
+    const limit = req.query.limit || null;
+    const offset = req.query.offset || null;
+    Question.findAll({
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+      limit,
+      offset,
+    }).then((questions) => {
       res.json(questions);
     }, (error) => {
       res.send(error);
@@ -20,7 +28,7 @@ router.route('/questions')
   .post((req, res) => {
     Question.create({
       title: req.body.title,
-      text: req.body.body,
+      text: req.body.text,
     }).then(() => {
       res.send('Question added.');
     }, (error) => {
